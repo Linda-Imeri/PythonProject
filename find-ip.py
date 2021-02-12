@@ -19,9 +19,6 @@ def find_ip(file):
     return (lst)
         
 
-
-    
-
 def find_mac(file):
     pkts = rdpcap(file)
     #regex for mac address
@@ -45,32 +42,30 @@ def find_port(file):
         lst.append(find[0]) 
     print (lst)
 
-
-# file = "C:/Users/LENOVO/Desktop/log1.pcap"
-# find_ip(file)
-# find_mac(file)
-
 def UploadAction(event=None):
     global filename
     filename = filedialog.askopenfilename()
     return filename
 
 def main():
-    root = tk.Tk()
-    button = tk.Button(root, text='Open', command=UploadAction)
-    button.pack()
+    root = tk.Tk(className=' Regex Application')
+    root.geometry("300x300")
+    button = tk.Button(root, text='Open file', command=UploadAction)
+    button.grid(row=1,column=1,pady=10, padx=30)
     result = tk.Label(root, text='')
     
     ip_btn = tk.Button(root, text='Find IPs')
     ip_btn.config(command=lambda: result.config(text=("\n\n".join(find_ip(filename)))))
-    ip_btn.pack()
+    ip_btn.grid(row=3,column=1, padx=30)
     result.config(text="") 
-    ip_btn = tk.Button(root, text='Find mac')
-    ip_btn.config(command=lambda: result.config(text=("\n".join(find_mac(filename)))))
-    ip_btn.pack() 
 
 
-    result.pack(padx = 5, pady = 25)
+    mac_btn = tk.Button(root, text='Find mac')
+    mac_btn.config(command=lambda: result.config(text=("\n\n".join(find_mac(filename)))))
+    mac_btn.grid(row=3,column=2)
+
+
+    result.grid(row=4,column=2)
     root.mainloop()
 
 
