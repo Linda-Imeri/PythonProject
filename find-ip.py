@@ -66,8 +66,8 @@ def main():
     ip_btn = tk.Button(root, text='Find IPs')
     ip_btn.config(command=lambda: result.config(text=(" \n\n".join(find_ip(filename)))))
     ip_btn.grid(row=3,column=1, padx=30)
-    button.bind("<Enter>", on_enter)
-    button.bind("<Leave>", on_leave)
+    ip_btn.bind("<Enter>", on_enter)
+    ip_btn.bind("<Leave>", on_leave)
     result.config(text="") 
 
 
@@ -75,8 +75,8 @@ def main():
     mac_btn = tk.Button(root, text='Find mac')
     mac_btn.config(command=lambda: result.config(text=("\n\n".join(find_mac(filename)))))
     mac_btn.grid(row=3,column=2)
-    button.bind("<Enter>", on_enter)
-    button.bind("<Leave>", on_leave)
+    mac_btn.bind("<Enter>", on_enter)
+    mac_btn.bind("<Leave>", on_leave)
 
 
     result.grid(row=4,column=2)
