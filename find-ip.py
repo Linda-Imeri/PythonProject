@@ -61,11 +61,11 @@ def main():
     button.pack()
     result = tk.Label(root, text='')
     
-    ip_btn = tk.Button(root, text='Find IPs')
+    ip_btn = tk.Button(root, text='Find IPs:')
     ip_btn.config(command=lambda: result.config(text=("\n\n".join(find_ip(filename)))))
     ip_btn.pack()
     result.config(text="") 
-    ip_btn = tk.Button(root, text='Find mac')
+    ip_btn = tk.Button(root, text='Find mac:')
     ip_btn.config(command=lambda: result.config(text=("\n".join(find_mac(filename)))))
     ip_btn.pack() 
 
