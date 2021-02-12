@@ -54,10 +54,11 @@ def main():
     button.grid(row=1,column=1,pady=10, padx=30)
     result = tk.Label(root, text='')
     
-    ip_btn = tk.Button(root, text='Find IPs')
+    ip_btn = tk.Button(root, text='Find IPs:')
     ip_btn.config(command=lambda: result.config(text=("\n\n".join(find_ip(filename)))))
     ip_btn.grid(row=3,column=1, padx=30)
     result.config(text="") 
+
 
 
     mac_btn = tk.Button(root, text='Find mac')
