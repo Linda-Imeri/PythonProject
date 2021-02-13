@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import filedialog
 
 def find_ip(file):
-    # file= "C:/Users/LENOVO/Desktop/log1.pcap"
+
     result = ""
     pkts = rdpcap(file)
     #regex for source ip address
