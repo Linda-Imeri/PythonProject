@@ -34,9 +34,6 @@ text_label=Label(frame1,text="Read your log files",bd='8',bg='#00233B',fg='white
 text_label.config(font=("Arial", 12),)
 text_label.place(x=20,y=50)
 
-
-
-
 #Frame 1 code
 
 frame1_btn=tk.Button(frame1,text='Start',command=lambda:show_frame(frame2),bd='1',bg='#00233B', fg='white',activebackground='#00233B',width='10')
@@ -51,21 +48,15 @@ def find_ip(file):
     file_extension = os.path.splitext(file)[1]
     if(file_extension==".txt"):
 
-        # opening and reading the file  
         with open(file) as fh: 
             fstring = fh.readlines() 
-        
-        # declaring the regex pattern for IP addresses 
+        #regex for source ip address
         pattern = re.compile(r'([0-9]{1,3}\.){3}[0-9]{1,3}')
-        
-        # initializing the list object 
         lst=[] 
-        
-        # extracting the IP addresses 
         for line in fstring: 
-            lst.append(pattern.search(line)[0]) 
-        
-        # displaying the extracted IP adresses 
+            find = pattern.search(line)
+            if find[0] not in lst:
+                lst.append(find[0]) 
         return(lst) 
 
     else:
@@ -85,21 +76,18 @@ def find_mac(file):
     file_extension = os.path.splitext(file)[1]
     if(file_extension==".txt"):
 
-        # opening and reading the file  
+        
         with open(file) as fh: 
             fstring = fh.readlines() 
-        
-        # declaring the regex pattern for IP addresses 
+        #regex for mac address
         pattern = re.compile(r'(?:[0-9a-fA-F]:?){12}')
         
-        # initializing the list object 
         lst=[] 
         
-        # extracting the IP addresses 
         for line in fstring: 
-            lst.append(pattern.search(line)[0]) 
-        
-        # displaying the extracted IP adresses 
+             find = pattern.search(line)
+             if find[0] not in lst:
+                lst.append(find[0])
         return(lst) 
 
     else:   
@@ -128,21 +116,18 @@ def on_leave(e):
     e.widget['background'] = '#00233B'
 
 def main():
-    # root = tk.Tk(className=' Regex Application')
-    # root.geometry("500x300")
     button = tk.Button(frame2, text='Select log file', command=UploadAction, bg='#00233B', fg='white')
     button.grid(row=1,column=2,pady=10, padx=30)
     button.bind("<Enter>", on_enter)
     button.bind("<Leave>", on_leave)
 
-    result = tk.Label(frame2, text='Select a file to show results!')
+    result = tk.Label(frame2, text='Select a file to show results!', bg='#0098EB',fg='white')
     
     ip_btn = tk.Button(frame2, text='Find Source IP Addresses',  bg='#00233B', fg='white')
     ip_btn.config(command=lambda: result.config(text=("\n\n".join(find_ip(filename)))))
     ip_btn.grid(row=3,column=1, padx=15)
     ip_btn.bind("<Enter>", on_enter)
     ip_btn.bind("<Leave>", on_leave)
-    #result.config(text="") 
 
 
 
@@ -155,13 +140,12 @@ def main():
     result_label = tk.Label(frame2, text='Result: ', bg='#00233B',fg='white')
     result_label.grid(row=4,column=2)
     result.grid(row=5,column=2)
-    # root.mainloop()
 
-show_frame(frame1)
+    show_frame(frame1)
+    window.mainloop() 
 
 
 
 if __name__ == "__main__":
     main()
 
-window.mainloop()
