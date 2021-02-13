@@ -48,29 +48,71 @@ frame1_btn.place(x=20,y=180)
 def find_ip(file):
 
     result = ""
-    pkts = rdpcap(file)
-    #regex for source ip address
-    pattern = re.compile(r'([0-9]{1,3}\.){3}[0-9]{1,3}')
-    lst=[] 
-    for pkt in pkts:
-        a = pkt.show(dump=True)
-        find= pattern.search(a)
-        if find[0] not in lst: 
-            lst.append(find[0]) 
-    return (lst)
+    file_extension = os.path.splitext(file)[1]
+    if(file_extension==".txt"):
+
+        # opening and reading the file  
+        with open(file) as fh: 
+            fstring = fh.readlines() 
         
+        # declaring the regex pattern for IP addresses 
+        pattern = re.compile(r'([0-9]{1,3}\.){3}[0-9]{1,3}')
+        
+        # initializing the list object 
+        lst=[] 
+        
+        # extracting the IP addresses 
+        for line in fstring: 
+            lst.append(pattern.search(line)[0]) 
+        
+        # displaying the extracted IP adresses 
+        return(lst) 
+
+    else:
+        pkts = rdpcap(file)
+        #regex for source ip address
+        pattern = re.compile(r'([0-9]{1,3}\.){3}[0-9]{1,3}')
+        lst=[] 
+        for pkt in pkts:
+            a = pkt.show(dump=True)
+            find= pattern.search(a)
+            if find[0] not in lst: 
+                lst.append(find[0]) 
+        return (lst)
+            
 
 def find_mac(file):
-    pkts = rdpcap(file)
-    #regex for mac address
-    pattern = re.compile(r'(?:[0-9a-fA-F]:?){12}')
-    lst=[] 
-    for pkt in pkts:
-        a = pkt.show(dump=True)
-        find= pattern.search(a)
-        if find[0] not in lst: 
-            lst.append(find[0])  
-    return (lst)
+    file_extension = os.path.splitext(file)[1]
+    if(file_extension==".txt"):
+
+        # opening and reading the file  
+        with open(file) as fh: 
+            fstring = fh.readlines() 
+        
+        # declaring the regex pattern for IP addresses 
+        pattern = re.compile(r'(?:[0-9a-fA-F]:?){12}')
+        
+        # initializing the list object 
+        lst=[] 
+        
+        # extracting the IP addresses 
+        for line in fstring: 
+            lst.append(pattern.search(line)[0]) 
+        
+        # displaying the extracted IP adresses 
+        return(lst) 
+
+    else:   
+        pkts = rdpcap(file)
+        #regex for mac address
+        pattern = re.compile(r'(?:[0-9a-fA-F]:?){12}')
+        lst=[] 
+        for pkt in pkts:
+            a = pkt.show(dump=True)
+            find= pattern.search(a)
+            if find[0] not in lst: 
+                lst.append(find[0])  
+        return (lst)
 
 
 def UploadAction(event=None):
@@ -79,21 +121,23 @@ def UploadAction(event=None):
     return filename
 
 def on_enter(e):
-    e.widget['background'] = '#849299'
+    
+    e.widget['background'] = '#0098EB'
 
 def on_leave(e):
-    e.widget['background'] = '#3e6678'
+    e.widget['background'] = '#00233B'
 
 def main():
-
-    button = tk.Button(frame2, text='Select log file', command=UploadAction, bg='#3e6678', fg='white')
+    # root = tk.Tk(className=' Regex Application')
+    # root.geometry("500x300")
+    button = tk.Button(frame2, text='Select log file', command=UploadAction, bg='#00233B', fg='white')
     button.grid(row=1,column=2,pady=10, padx=30)
     button.bind("<Enter>", on_enter)
     button.bind("<Leave>", on_leave)
 
     result = tk.Label(frame2, text='Select a file to show results!')
     
-    ip_btn = tk.Button(frame2, text='Find Source IP Addresses',  bg='#3e6678', fg='white')
+    ip_btn = tk.Button(frame2, text='Find Source IP Addresses',  bg='#00233B', fg='white')
     ip_btn.config(command=lambda: result.config(text=("\n\n".join(find_ip(filename)))))
     ip_btn.grid(row=3,column=1, padx=15)
     ip_btn.bind("<Enter>", on_enter)
@@ -102,13 +146,13 @@ def main():
 
 
 
-    mac_btn = tk.Button(frame2, text='Find Source Mac Addresses',  bg='#3e6678', fg='white')
+    mac_btn = tk.Button(frame2, text='Find Source Mac Addresses',  bg='#00233B', fg='white')
     mac_btn.config(command=lambda: result.config(text=("\n\n".join(find_mac(filename)))))
     mac_btn.grid(row=3,pady=10, column=3, padx=15)
     mac_btn.bind("<Enter>", on_enter)
     mac_btn.bind("<Leave>", on_leave)
 
-    result_label = tk.Label(frame2, text='Result: ', bg='#3e6678',fg='white')
+    result_label = tk.Label(frame2, text='Result: ', bg='#00233B',fg='white')
     result_label.grid(row=4,column=2)
     result.grid(row=5,column=2)
     # root.mainloop()
@@ -120,5 +164,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
