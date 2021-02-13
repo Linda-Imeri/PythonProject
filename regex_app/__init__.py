@@ -5,6 +5,19 @@ from tkinter import filedialog
 from tkinter import *
 from PIL import Image,ImageTk
 import os
+
+def openwindow():
+    new_window=Toplevel(frame1)
+    new_window.geometry("250x250")
+    new_window.title("Help")
+    new_window.resizable(False,False)
+    new_window['background']='#0098EB'  
+
+    lbl1=Label(new_window,text="Read your log files",bd='8',bg='#00233B',fg='white',width='15')
+    lbl1.pack()
+
+    
+
 def show_frame(frame):
     frame.tkraise()
 
@@ -41,6 +54,9 @@ frame1_btn.config(font=("Arial", 12),)
 frame1_btn.place(x=20,y=180)
 
 
+#Help button
+help_btn=Button(frame1,text="Help",command=openwindow,bd='1',bg='#00233B', fg='white',activebackground='#00233B',width='10')
+help_btn.place(x=400,y=50)
 
 def find_ip(file):
 
