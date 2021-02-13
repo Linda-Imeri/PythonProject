@@ -46,7 +46,7 @@ frame1_btn.place(x=20,y=180)
 
 
 def find_ip(file):
-    # file= "C:/Users/LENOVO/Desktop/log1.pcap"
+
     result = ""
     pkts = rdpcap(file)
     #regex for source ip address
@@ -55,9 +55,8 @@ def find_ip(file):
     for pkt in pkts:
         a = pkt.show(dump=True)
         find= pattern.search(a)
-        lst.append(find[0]) 
-    # for ip in lst:
-    #     return (ip)
+        if find[0] not in lst: 
+            lst.append(find[0]) 
     return (lst)
         
 
@@ -69,7 +68,8 @@ def find_mac(file):
     for pkt in pkts:
         a = pkt.show(dump=True)
         find= pattern.search(a)
-        lst.append(find[0]) 
+        if find[0] not in lst: 
+            lst.append(find[0])  
     return (lst)
 
 
@@ -92,14 +92,14 @@ def main():
     button.bind("<Enter>", on_enter)
     button.bind("<Leave>", on_leave)
 
-    result = tk.Label(frame2, text='',bg='#3e6678',fg='white')
+    result = tk.Label(frame2, text='Select a file to show results!')
     
     ip_btn = tk.Button(frame2, text='Find Source IP Addresses',  bg='#3e6678', fg='white')
-    ip_btn.config(command=lambda: result.config(text=(" \n\n".join(find_ip(filename)))))
+    ip_btn.config(command=lambda: result.config(text=("\n\n".join(find_ip(filename)))))
     ip_btn.grid(row=3,column=1, padx=15)
     ip_btn.bind("<Enter>", on_enter)
     ip_btn.bind("<Leave>", on_leave)
-    result.config(text="") 
+    #result.config(text="") 
 
 
 
