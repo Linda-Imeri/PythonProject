@@ -1,5 +1,12 @@
 # PythonProject
-Detyra e 3 në lënden "Siguria në Internet" është një aplikacion që përmban një meny për përzgjedhjen e opcioneve/funksionaliteteve të veta në GUI pra zhvillimi i aplikacionit i cili përdor regular expression për të kërkuar në log fajlla të Wireshark dhe text file të cilen e kemi zhvilluar me ane te Tkinter i cili është një Python modul që lidhet me paketën e mjeteve Tk GUI.  
-Aplikacioni Regex Application i përberë nga dy windows ku window i parë është hyrje për selektim të vazhdimit tek pjesa e dytë dhe window i dytë si funksionalitet ka gjetjen e IP adresave dhe Mac Adresave . 
+Detyra e 3 në lëndën "Siguria në Internet" është një aplikacion GUI që përmbanë disa opsione për zgjedhje të funksionaliteteve dhe përdorë Regular Expressions për të kërkuar për IP Adresa dhe Mac Adresa burimore në log fajlla të Wireshark apo tekst fajlla. Ky aplikacion është zhvilluar në gjuhën Python dhe përdorë module shtesë të nevojshme për arritjen e rezultateve.
 
-Në aplikacion test cases janë implementuar duke përdorur modulin unittest dhe janë nxjerrë krahasime duke i testuar funksionet për rastet e rezultatit  të saktë dhe të pasaktë. Fajlli testues "log1.pcap" është një capture e trafikut të interface-it Wi-Fi ne Wireshark. Për të tri test cases, rezultati në console kthen OK.
+Në aplikacion test cases janë implementuar duke përdorur modulin "Unittest" dhe janë nxjerrë krahasime duke i testuar funksionet për rastet e rezultatit të saktë dhe të pasaktë. Për të tri test cases, rezultati në konzolë kthen OK.
+
+Ekzekutimi i aplikacionit bëhet si vijon:
+ Kalojmë në hapësirën e projektit ne folderin PythonProject dhe në terminal shkruajmë komandën:
+py regex_app/__init__.py
+
+Ekzekutimi i fajllit për test cases bëhet si vijon:
+Kalojmë në hapësirën e projektit ne folderin PythonProject dhe në terminal shkruajmë komandën:
+py -m unittest test.Testing
