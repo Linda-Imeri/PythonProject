@@ -8,16 +8,22 @@ import os
 
 def openwindow():
     new_window=Toplevel(frame1)
-    new_window.geometry("250x250")
+    new_window.geometry("400x250")
     new_window.title("Help")
     new_window.resizable(False,False)
     new_window['background']='#0098EB'  
 
-    lbl1=Label(new_window,text="Read your log files",bd='8',bg='#00233B',fg='white',width='15')
-    lbl1.pack()
+    lbl1=Label(new_window,text="Start- Click on this button to continue to the application",width='50',bd='8',bg='#00233B',fg='white')
+    lbl1.place(x=20,y=50)
+   
+    lbl2=Label(new_window,text="Select log file-Choose the file you want to read",width='50',bd='8',bg='#00233B',fg='white')
+    lbl2.place(x=20,y=100)
 
-    
+    lbl3=Label(new_window,text="Find Source IP Addresses -show ip addresses of the file",width='50',bd='8',bg='#00233B',fg='white')
+    lbl3.place(x=20,y=150)
 
+    lbl4=Label(new_window,text="Find Source MAC Addresses -show mac addresses of the file",width='50',bd='8',bg='#00233B',fg='white')
+    lbl4.place(x=20,y=200)
 def show_frame(frame):
     frame.tkraise()
 
