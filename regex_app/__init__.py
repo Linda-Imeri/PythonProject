@@ -31,7 +31,6 @@ def show_frame(frame):
 window=tk.Tk()
 # Adjust size  
 window.title('Regex Application')
-window.iconbitmap('Images/python.png')
 window.geometry("490x300")
 window.rowconfigure(0,weight=1)
 window.columnconfigure(0,weight=1)
