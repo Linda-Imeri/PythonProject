@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import *
 from PIL import Image,ImageTk
+import os
 
 def show_frame(frame):
     frame.tkraise()
@@ -63,7 +64,9 @@ def find_ip(file):
         
         # extracting the IP addresses 
         for line in fstring: 
-            lst.append(pattern.search(line)[0]) 
+            find = pattern.search(line)
+            if find[0] not in lst:
+                lst.append(find[0]) 
         
         # displaying the extracted IP adresses 
         return(lst) 
@@ -97,7 +100,9 @@ def find_mac(file):
         
         # extracting the IP addresses 
         for line in fstring: 
-            lst.append(pattern.search(line)[0]) 
+             find = pattern.search(line)
+             if find[0] not in lst:
+                lst.append(find[0])
         
         # displaying the extracted IP adresses 
         return(lst) 
@@ -158,7 +163,7 @@ def main():
     # root.mainloop()
 
     show_frame(frame1)
-    window.mainloop()
+    window.mainloop() 
 
 
 
