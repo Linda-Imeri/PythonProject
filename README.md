@@ -11,4 +11,4 @@ Ekzekutimi i fajllit për test cases bëhet si vijon:
 Kalojmë në hapësirën e projektit ne folderin PythonProject dhe në terminal shkruajmë komandën:
 py -m unittest test.Testing
 
-Secila dritare e aplikacionit gjenden në follderin 'screenshoot'.
+Secila dritare e aplikacionit gjendet në follderin 'Screenshoots'.
