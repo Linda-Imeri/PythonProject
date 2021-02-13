@@ -13,9 +13,8 @@ def find_ip(file):
     for pkt in pkts:
         a = pkt.show(dump=True)
         find= pattern.search(a)
-        lst.append(find[0]) 
-    # for ip in lst:
-    #     return (ip)
+        if find[0] not in lst: 
+            lst.append(find[0]) 
     return (lst)
         
 
@@ -27,20 +26,10 @@ def find_mac(file):
     for pkt in pkts:
         a = pkt.show(dump=True)
         find= pattern.search(a)
-        lst.append(find[0]) 
+        if find[0] not in lst: 
+            lst.append(find[0])  
     return (lst)
 
-
-# def find_protocol(file):
-#     pkts = rdpcap(file)
-#     #regex for mac address
-#     pattern = re.compile(r'\btcp\b', re.I)
-#     lst=[] 
-#     for pkt in pkts:
-#         a = pkt.show(dump=True)
-#         find= pattern.findall(a)
-#         lst.append(find[1]) 
-#     return (lst)
 
 
 def UploadAction(event=None):
