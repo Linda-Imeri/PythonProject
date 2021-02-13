@@ -4,11 +4,11 @@ Detyra e 3 në lëndën "Siguria në Internet" është një aplikacion GUI që p
 Në aplikacion test cases janë implementuar duke përdorur modulin "Unittest" dhe janë nxjerrë krahasime duke i testuar funksionet për rastet e rezultatit të saktë dhe të pasaktë. Për të tri test cases, rezultati në konzolë kthen OK.
 
 Ekzekutimi i aplikacionit bëhet si vijon:
-  •Kalojmë në hapësirën e projektit ne folderin PythonProject dhe në terminal shkruajmë komandën:
+  <br>     •Kalojmë në hapësirën e projektit ne folderin PythonProject dhe në terminal shkruajmë komandën:
   py regex_app/__init__.py
 
 Ekzekutimi i fajllit për test cases bëhet si vijon:
-  •Kalojmë në hapësirën e projektit ne folderin PythonProject dhe në terminal shkruajmë komandën:
+ <br>•Kalojmë në hapësirën e projektit ne folderin PythonProject dhe në terminal shkruajmë komandën:
   py -m unittest test.Testing
 
 Secila dritare e aplikacionit gjendet në follderin 'Screenshoots'.
