@@ -7,6 +7,7 @@ def show_frame(frame):
     frame.tkraise()
 
 
+    #3ggggg
 window=tk.Tk()
 window.state('zoomed')
 
