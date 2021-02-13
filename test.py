@@ -7,19 +7,19 @@ class Testing(unittest.TestCase):
     def test_ip(self):
         file= "log1.pcap"
         result = find_ip(file)
-        to_test = ['192.168.0.19','108.177.15.189', '52.149.21.60','64.233.184.188']
+        to_test = ['192.168.20.70','74.125.131.27']
         self.assertEqual(result, to_test)
 
     def test_mac(self):
         file= "log1.pcap"
         result = find_mac(file)
-        to_test = ['08:95:2a:82:a2:bd','84:ef:18:e5:59:de']
+        to_test = ['00:1f:29:5e:4d:26','00:50:56:bb:3a:a0']
         self.assertEqual(result, to_test)
 
     def test_ip_false(self):
         file= "log1.pcap"
         result = find_ip(file)
-        to_test = ['192.168.0.19','108.177.15.189', '52.149.21.60']
+        to_test = ['192.168.20.19','108.177.15.189', '52.149.21.60']
         self.assertNotEqual(result, to_test)
 
 if __name__ == '__main__':
