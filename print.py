@@ -9,58 +9,39 @@ def show_frame(frame):
     frame.tkraise()
 
 
-    #3ggggg
 window=tk.Tk()
 # Adjust size  
-window.title('PythonProject')
-#window.iconbitmap('PythonProject\PythonProject\Images\python.png')
-window.geometry("500x300")
+window.title('Regex Application')
+window.iconbitmap('Images/python.png')
+window.geometry("490x300")
 window.rowconfigure(0,weight=1)
 window.columnconfigure(0,weight=1)
+window.resizable(width=False, height=False)
+frame1=tk.Frame(window)
+frame2=tk.Frame(window)
 
-load=Image.open('C:/Users/Lindë Imeri/Desktop/PythonProject/PythonProject/Images/python.png')
+for frame in (frame1,frame2):
+    frame.grid(row=0,column=0,sticky='nsew')
+
+load=Image.open('Images/python.png')
 render=ImageTk.PhotoImage(load)
-img=Label(window,image=render)
+img=Label(frame1,image=render)
+img1=Label(frame2,image=render)
 img.place(x=0,y=0)
+img1.place(x=0,y=0)
 
-text_label=Label(window,text="Read your log files",bd='8',bg='#42ddf5',activebackground='#42ddf5')
+text_label=Label(frame1,text="Read your log files",bd='8',bg='#00233B',fg='white',width='15')
 text_label.config(font=("Arial", 12),)
 text_label.place(x=20,y=50)
 
-frame2=tk.Frame(window)
-
-b1=Button(window,text="Start",bd=0,bg='#42ddf5',activebackground='#42ddf5',width='15',command=lambda:show_frame(frame2))
-b1.config(font=("Arial", 12),)
-b1.place(x=20,y=200)
-
-
- frame1=tk.Frame(window)
 
 
 
-# for frame in (frame1,frame2):
-#     frame.grid(row=0,column=0,sticky='nsew')
+#Frame 1 code
 
-
-# #Frame 1 code
-
-# frame1_btn=tk.Button(frame1,text='Get Started',command=lambda:show_frame(frame2),bg='blue')
-# frame1_btn.grid(row=1,column=1,pady=10, padx=30)
-# frame1_btn.pack()
-
-# frame1_image=tk.Label(frame1,image=img,bd=0)
-# frame1_image.place(x=0,y=0,relwidth=1,relheight=1)
-# frame1_image.pack()
-
-
-#Frame 2 code
-# frame2_title=tk.Label(frame2,text='This is frame 2',bg='black')
-# frame2_title.pack(fill='x')
-
-# frame2_btn=tk.Button(frame2,text='Enter',command=lambda:show_frame(frame1))
-# frame2_btn.pack()
-
-
+frame1_btn=tk.Button(frame1,text='Start',command=lambda:show_frame(frame2),bd='1',bg='#00233B', fg='white',activebackground='#00233B',width='10')
+frame1_btn.config(font=("Arial", 12),)
+frame1_btn.place(x=20,y=180)
 
 
 
@@ -107,15 +88,15 @@ def main():
     # root = tk.Tk(className=' Regex Application')
     # root.geometry("500x300")
     button = tk.Button(frame2, text='Select log file', command=UploadAction, bg='#3e6678', fg='white')
-    button.grid(row=1,column=1,pady=10, padx=30)
+    button.grid(row=1,column=2,pady=10, padx=30)
     button.bind("<Enter>", on_enter)
     button.bind("<Leave>", on_leave)
 
-    result = tk.Label(frame2, text='')
+    result = tk.Label(frame2, text='',bg='#3e6678',fg='white')
     
     ip_btn = tk.Button(frame2, text='Find Source IP Addresses',  bg='#3e6678', fg='white')
     ip_btn.config(command=lambda: result.config(text=(" \n\n".join(find_ip(filename)))))
-    ip_btn.grid(row=3,column=1, padx=30)
+    ip_btn.grid(row=3,column=1, padx=15)
     ip_btn.bind("<Enter>", on_enter)
     ip_btn.bind("<Leave>", on_leave)
     result.config(text="") 
@@ -124,7 +105,7 @@ def main():
 
     mac_btn = tk.Button(frame2, text='Find Source Mac Addresses',  bg='#3e6678', fg='white')
     mac_btn.config(command=lambda: result.config(text=("\n\n".join(find_mac(filename)))))
-    mac_btn.grid(row=3,pady=10, column=3, padx=20)
+    mac_btn.grid(row=3,pady=10, column=3, padx=15)
     mac_btn.bind("<Enter>", on_enter)
     mac_btn.bind("<Leave>", on_leave)
 
@@ -133,7 +114,7 @@ def main():
     result.grid(row=5,column=2)
     # root.mainloop()
 
-show_frame(frame2)
+show_frame(frame1)
 
 
 
