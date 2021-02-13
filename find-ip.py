@@ -31,6 +31,18 @@ def find_mac(file):
     return (lst)
 
 
+# def find_protocol(file):
+#     pkts = rdpcap(file)
+#     #regex for mac address
+#     pattern = re.compile(r'\btcp\b', re.I)
+#     lst=[] 
+#     for pkt in pkts:
+#         a = pkt.show(dump=True)
+#         find= pattern.findall(a)
+#         lst.append(find[1]) 
+#     return (lst)
+
+
 def UploadAction(event=None):
     global filename
     filename = filedialog.askopenfilename()
